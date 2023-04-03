@@ -1,2 +1,39 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          
+          <tr>
+            <% @users.each do |user| %>
+              <% if user.profile_image.attached? %>
+                <td><%= image_tag user.profile_image %></td>
+              <% else %>
+                <td><%= image_tag 'NoImage', size: "80x80" %></td>
+              <% end %>
+            <% end %>
+            <% @books.each do |book| %>
+              <td><%= book.title %></td>
+              <td><%= book.body %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
