@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-
+      <%= render 'info', book: @book  %>
     </div>
     
     <div class="col-md-8 offset-md-1">
@@ -20,14 +20,8 @@
         <tbody>
           
           <tr>
-            <% @users.each do |user| %>
-              <% if user.profile_image.attached? %>
-                <td><%= image_tag user.profile_image %></td>
-              <% else %>
-                <td><%= image_tag 'NoImage', size: "80x80" %></td>
-              <% end %>
-            <% end %>
             <% @books.each do |book| %>
+              <td><%= book.user.get_profile_image(80, 80) %></td>
               <td><%= book.title %></td>
               <td><%= book.body %></td>
             <% end %>
