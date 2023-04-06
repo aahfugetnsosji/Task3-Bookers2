@@ -10,8 +10,9 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
-    @user = User.find(@book.user_id)
+    @book_find = Book.find(params[:id])
+    @book = Book.new
+    @user = User.find(@book_find.user_id)
   end
 
   def edit
@@ -19,10 +20,10 @@ class BooksController < ApplicationController
   end
   
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    @book.save
-    redirect_to books_path(params[:id])
+    book = Book.new(book_params)
+    book.user_id = current_user.id
+    book.save
+    redirect_to book_path(book.id)
   end
   
   def update
