@@ -5,7 +5,13 @@
       <%= form_with model: @user do |f| %>
       <div id="errors_explanation">
         <% if @user.errors.any? %>
-          <h3><%= @user.errors.count %> error prohibited this obj from being saved:</h3>
+          <h3>
+            <% if @user.errors.count < 2 %>
+              <%= @user.errors.count %> error prohibited this obj from being saved:
+            <% else %>
+              <%= @user.errors.count %> errors prohibited this obj from being saved:
+            <% end %>
+          </h3>
            <ul>
             <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
