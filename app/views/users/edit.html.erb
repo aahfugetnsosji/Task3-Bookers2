@@ -4,6 +4,7 @@
       <h2>User info</h2>
       
       <%= form_with model: @user do |f| %>
+      <!--バリデーションメッセージを表示-->
         <div id="errors_explanation">
           <% if @user.errors.any? %>
             <h3>
